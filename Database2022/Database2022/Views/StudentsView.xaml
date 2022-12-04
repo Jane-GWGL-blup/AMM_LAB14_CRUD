@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Database2022.Views.StudentsView">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HorizontalOptions="Center" Margin="0,30,0,0" Orientation="Horizontal">
+                <Button Text="Add"
+                    BackgroundColor="DarkGreen"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand" 
+                    Command="{Binding NewStudentCommand}"                             
+                         />
+                <Button Text="List"
+                    BackgroundColor="DarkBlue"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand" 
+                    Command="{Binding LoadStudentsCommand}"                             
+                         />
+            </StackLayout>
+            <ListView
+                x:Name="list"
+                ItemsSource="{Binding Students}"
+                HasUnevenRows="True"            
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="True"
+                                Margin="3">
+
+                                <StackLayout
+                                    Orientation="Vertical">
+                                    <Grid
+                                    x:Name="Item"
+                                    VerticalOptions="CenterAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="ID: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Text="{Binding StudentId}"/>
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="Nombre: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label 
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding Nombre}"/>
+
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Text="Apellido Paterno: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label 
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            Text="{Binding ApellidoPaterno}"/>
+
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Text="Fecha de Nacimiento: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            Text="{Binding FechaNacimiento}"/>
+
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            Text="Nota: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="1"
+                                            Text="{Binding Nota}"/>
+                                        
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="0"
+                                            Text="¿Aprobado?: "
+                                            FontAttributes="Bold"/>
+
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="1"
+                                            Text="{Binding EstaAprobado}"/>
+                                        <Button
+                                            Grid.Row="6"
+                                            Grid.Column="0"
+                                            Text="Actualizar"                  
+                                            BackgroundColor="DarkGoldenrod"
+                                            TextColor="White"
+                                            BindingContext="{Binding Source={x:Reference list}, Path=BindingContext}" 
+                                            Command="{Binding UpdateStudentCommand}"  
+                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
+                                                 />
+                                        <Button
+                                            Grid.Row="6"
+                                            Grid.Column="1"
+                                            Text="Eliminar"                  
+                                            BackgroundColor="DarkRed"
+                                            TextColor="White"
+                                            BindingContext="{Binding Source={x:Reference list}, Path=BindingContext}" 
+                                            Command="{Binding DeleteStudentCommand}"  
+                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
+                                                 />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Database2022.Views.StudentView">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="LightBlue">
+            
+            <StackLayout 
+                BackgroundColor="White"
+                Margin="5,30,5,2"
+                Padding="20,20,20,20">
+                <Frame 
+                BackgroundColor="DarkBlue"
+                Margin="0,0,0,34">
+                    <Label 
+                Text="Registrar o editar registro de un estudiante"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                </Frame>
+                <Label 
+                Text="Nombre"/>
+                <Entry 
+                Placeholder="Juan"
+                Text="{Binding Nombre}"/>
+                <Label
+                Text="Apellido Paterno"/>
+                <Entry 
+                Placeholder="García"
+                Text="{Binding ApellidoPaterno}"/>
+
+                <Label
+                Text="Fecha de Nacimiento"/>
+                <DatePicker 
+                Date="{Binding FechaNacimiento}" 
+                Format="MMMM dd, yyyy"
+                />
+
+                <Label
+                Text="Nota"/>
+                <Entry 
+                Placeholder="Nota"
+                Text="{Binding Nota}"/>
+
+                <Label
+                Text="¿Esta Aprobado?"/>
+                <Entry 
+                Placeholder="Si/No"
+                Text="{Binding EstaAprobado}"/>
+
+                <Button
+                    BackgroundColor="Green"
+                    TextColor="White"
+                Text="Guardar"
+                Command="{Binding CreateCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
